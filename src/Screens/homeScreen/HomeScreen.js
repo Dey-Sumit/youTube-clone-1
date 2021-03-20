@@ -14,20 +14,20 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   const { videos, loading } = useSelector((state) => state.homeVideos);
-
+  // console.log(videos);
   return (
     <Container>
       <Categories />
       <Row>
         {!loading
-          ? videos.map((video) => (
-              <Col lg={3} md={4} key={video.id}>
+          ? videos?.map((video, i) => (
+              <Col lg={3} md={4} key={i}>
                 <Video video={video} />
               </Col>
             ))
-          : [...Array(20)].map(() => (
-              <Col lg={3} md={4}>
-                <SkeletonVideo/>
+          : [...Array(20)].map((_, i) => (
+              <Col lg={3} md={4} key={i}>
+                <SkeletonVideo />
               </Col>
             ))}
       </Row>

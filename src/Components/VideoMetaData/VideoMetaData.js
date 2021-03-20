@@ -6,18 +6,18 @@ import { MdThumbUp, MdThumbDown } from "react-icons/md";
 import ShowMoreText from "react-show-more-text";
 
 // { video: { snippet, statistics }, videoId }
-const VideoMetaData = () => {
-  // const { channelId, channelTitle, description, title, publishedAt } = snippet;
-  // const { viewCount, likeCount, dislikeCount } = statistics;
+const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
+  const { channelId, channelTitle, description, title, publishedAt } = snippet;
+  const { viewCount, likeCount, dislikeCount } = statistics;
 
   return (
     <div className="videoMetaData py-2">
       <div className="videoMetaData__top">
-        <h5>horeg</h5>
+        <h5>{title}</h5>
         <div className="d-flex justify-content-between align-items-center py-1">
           <span className="mr-3">
-            {numeral(10000).format("0.a")} Views •
-            {moment('2020-9-8').fromNow()}
+            {numeral(viewCount).format("0.a")} Views •
+            {moment(publishedAt).fromNow()}
           </span>
           <div>
             <span className="mr-3">
@@ -26,7 +26,7 @@ const VideoMetaData = () => {
             </span>
             <span>
               <MdThumbDown size={26} />
-              {numeral(5000).format("0.a")} 
+              {numeral(5000).format("0.a")}
             </span>
           </div>
         </div>
@@ -53,9 +53,17 @@ const VideoMetaData = () => {
           more="SHOW MORE"
           less="SHOW LESS"
           anchorClass="showMoreText"
-          expanded={false} >
-        {/* // > {description} */}
-      <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis architecto dignissimos accusamus non porro dolor omnis aperiam, incidunt modi mollitia voluptates odio ut. Iusto exercitationem repellendus corporis, accusantium error quis vel quos nemo minima distinctio eius aperiam neque aut a.</p>
+          expanded={false}
+        >
+          {/* // > {description} */}
+          <p>
+            {" "}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+            architecto dignissimos accusamus non porro dolor omnis aperiam,
+            incidunt modi mollitia voluptates odio ut. Iusto exercitationem
+            repellendus corporis, accusantium error quis vel quos nemo minima
+            distinctio eius aperiam neque aut a.
+          </p>
         </ShowMoreText>
       </div>
     </div>

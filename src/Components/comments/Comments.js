@@ -23,13 +23,13 @@ const Comments = () => {
         </form>
       </div>
       <div className="comments__list">
-      {/* {
+        {/* {
           [...Array(10)].map(()=> <Comment/>)
       } */}
-        {[...Array(15)].map(() => 
-             <Comment /> 
-        )}
-
+        {[...Array(15)].map((_, i) => (
+          <Comment key={i} />
+          // change the key later 👆
+        ))}
 
         <Comment />
       </div>
